@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3d8865;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.contenedor-general {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #ffffff62;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor-diagnostico {
+    width: 90%;
+    max-width: 700px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+}
+
+.titulo-general {
+    padding: 20px;
+    text-align: center;
+}
+
+.titulo-general h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.titulo-general p {
+    font-size: 16px;
+}
+
+.contenedor-form {
+    padding: 20px;
+}
+
+.contenedor-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-sintomas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 10px; /* Espacio entre los elementos */
+    margin-bottom: 20px; /* Espacio entre los síntomas y el botón */
+}
+
+.grupo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.grupo input {
+    accent-color: #f9bc40;
+}
+
+.grupo label {
+    margin-left: 8px;
+}
+
+.contenedor-botones {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.contenedor-botones button {
+    padding: 10px 20px;
+    background-color: #005f3a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contenedor-botones button:hover {
+    background-color: #0a834a;
+}
+
+.contenedor-resultado {
+    text-align: left;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.contenedor-resultado p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.contenedor-resultado span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/*Estilos Modal: Estadistica*/
+.modal-estadistica {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Mover el modal al centro */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.modal-estadistica.active {
+    display: block; /* Mostrar cuando esté activo */
+}
+
+.modal-encabezado {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cerrar-modal {
+    padding: 1px 7px;
+    background-color: transparent;
+    color: #9b9a9a;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.cerrar-modal:hover {
+    background-color: #ebebeb;
+}
+
+.pdf-diagnostico {
+    display: block;
+    margin: 10px auto 0 auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 0;
+}
+
+.pdf-diagnostico i {
+    color: #c82333;
+}
+
+/* Responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .contenedor-sintomas {
+        grid-template-columns: repeat(2, 1fr); /* Cambiar a dos columnas en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-sintomas {
+        grid-template-columns: 1fr; /* Una columna para pantallas móviles */
+    }
+}
