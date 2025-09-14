@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Médico Básico - Algoritmo de Bayes</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Librería para el gráfico estadístico -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> <!-- Librería para el PDF-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="contenedor-general">
+        <div class="contenedor-diagnostico">
+            <div class="titulo-general">
+                <h1>Diagnóstico Médico Básico</h1>
+                <p>Selecciona los síntomas presentes para calcular la probabilidad de cada enfermedad.</p>
+            </div>
+            <div class="contenedor-form">
+                <form id="symptomForm">
+                    <div class="contenedor-sintomas">
+                        <div class="grupo">
+                            <input type="checkbox" id="fever" value="fever">
+                            <label for="fever">Fiebre</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="cough" value="cough">
+                            <label for="cough">Tos</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="headache" value="headache">
+                            <label for="headache">Dolor de cabeza</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="fatigue" value="fatigue">
+                            <label for="fatigue">Fatiga</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="thirst" value="thirst">
+                            <label for="thirst">Sed intensa</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="wheezing" value="wheezing">
+                            <label for="wheezing">Sibilancias (silbido al respirar)</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="shortness" value="shortness">
+                            <label for="shortness">Dificultad para respirar</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="sneezing" value="sneezing">
+                            <label for="sneezing">Estornudos</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="itchyEyes" value="itchyEyes">
+                            <label for="itchyEyes">Ojos irritados</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="burningUrine" value="burningUrine">
+                            <label for="burningUrine">Dolor al orinar</label>
+                        </div>
+                        <div class="grupo">
+                            <input type="checkbox" id="frequentUrine" value="frequentUrine">
+                            <label for="frequentUrine">Orina frecuente</label>
+                        </div>
+                    </div>
+                    <div class="contenedor-botones">
+                        <button type="button" id="btnDiagnostico">Diagnosticar</button>
+                        <button type="button" id="btnEstadistica">Estadísticas</button>
+                        <button type="button" id="limpiar">Nuevo</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="result" class="contenedor-resultado">
+            <h2>Resultado del Diagnóstico:</h2>
+            <p><strong>Resfriado:</strong> <span id="cold-prob">--</span>%</p>
+            <p><strong>Gripe:</strong> <span id="flu-prob">--</span>%</p>
+            <p><strong>Diabetes:</strong> <span id="diabetes-prob">--</span>%</p>
+            <p><strong>Asma:</strong> <span id="asthma-prob">--</span>%</p>
+            <p><strong>Alergia:</strong> <span id="allergy-prob">--</span>%</p>
+            <p><strong>Infección Urinaria:</strong> <span id="uti-prob">--</span>%</p>
+        </div>
+    </div>
+
+    <!-- Modal para la estadística -->
+    <div id="modalEstadistica" class="modal-estadistica">
+        <div class="modal-encabezado">
+            <h2>Estadísticas del Diagnóstico Médico</h2>
+            <button id="closeModal" class="cerrar-modal">&times;</button>
+        </div>
+        <canvas id="statsChart" width="600" height="400"></canvas>
+        <button id="pdf-diagnostico" class="pdf-diagnostico"><i class="fas fa-file-pdf"></i></button>
+    </div>
+
+    <script src="logica.js"></script>
+</body>
+
+</html>
